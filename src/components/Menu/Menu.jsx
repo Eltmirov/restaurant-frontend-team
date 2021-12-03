@@ -46,7 +46,7 @@ const Menu = () => {
                     <div className="card-body">
                       <h5 className="card-title text-light">{product.name}</h5>
                       <p className="card-text  text-light text-center">
-                        Цена:{product.price}₽
+                        Цена: {product.price}₽
                       </p>
                     </div>
                   </div>
