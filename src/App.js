@@ -1,10 +1,12 @@
 import "./App.css";
 import ContactsPage from "./components/Pages/ContactsPage";
+import NewsPages from "./components/Pages/NewsPages";
 import { Route, Routes } from "react-router";
 import HomePage from "./components/Pages/HomePage";
 import React from "react";
 import AboutUsPages from "./components/Pages/AboutUsPages";
-import MenuPage from './components/Pages/MenuPage';
+import MenuPage from "./components/Pages/MenuPage";
+import Modals from "./components/Modals";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/about" element={<AboutUsPages />} />
         <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="/news" element={<NewsPages />} />
+        <Route path="/modals" element={<Modals />} />
       </Routes>
     </div>
   );

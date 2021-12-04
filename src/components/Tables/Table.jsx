@@ -1,9 +1,22 @@
-import React, { useState } from "react";
-import cl from "./table.module.css";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import React from "react";
 import Modals from "../Modals/index";
-const Table = ({ tableNumber, tableCapacity }) => {
+import {useDispatch, useSelector} from "react-redux";
+import {addUserInTable} from "../../redux/features/Table";
+
+const Table = ({ id, tableNumber, tableCapacity }) => {
+  const dispatch = useDispatch()
+  const token = useSelector((state) => state.auth.token);
+
+  const handleChangeModal = () => {
+    dispatch({
+      type: 'modalShow/changeTrue'
+    })
+  }
+
+  const handleAddProduct = () => {
+    dispatch(addUserInTable(id))
+  }
+
   return (
     <div className="card col-sm-5 m-2 shadow p-3 mb-5 bg-body rounded ">
       <img
@@ -22,13 +35,13 @@ const Table = ({ tableNumber, tableCapacity }) => {
           href="#"
           className="btn btn-outline-danger w-100"
           data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
           data-bs-whatever="@getbootstrap"
+          onClick={!token ? handleChangeModal : handleAddProduct}
         >
           ЗАБРОНИРОВАТЬ
         </button>
+        {!token && <Modals />}
       </div>
-      <Modals />
     </div>
   );
 };
